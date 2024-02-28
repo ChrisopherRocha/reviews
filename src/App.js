@@ -10,23 +10,41 @@ function App() {
   const { name, job, image, text, id } = people[index]
   // console.log(name);
 
+  const checkNumber = (number) => {
+    if (number > people.length -1) {
+      return 0
+    }
+    if (number < 0 ) {
+      return people.length -1;
+    }
+    return number
+  }
+
+  // const randomPerson = () => {
+  //   setIndex(Math.floor(Math.random() * people.length))
+  // }
+
+  const randomPerson = () => {
+    let randomNumber = Math.floor(Math.random() * people.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber))
+  }
+
   const nextPerson = () => {
     setIndex((currentIndex) => {
       const newIndex = currentIndex + 1;
-      if (newIndex > people.length -1) {
-        return 0
-      }
-      return newIndex;
+      
+      return checkNumber(newIndex);
     })
   }
 
   const prevPerson = () => {
     setIndex((currentIndex) => {
       const newIndex = currentIndex - 1;
-      if (newIndex < 0 ) {
-        return people.length -1;
-      }
-      return newIndex;
+      
+      return checkNumber(newIndex);
     })
   }
 
@@ -44,6 +62,7 @@ function App() {
           <button onClick={prevPerson}>Previous</button>
           <button onClick={nextPerson}>Next</button>
         </div>
+        <button className='btn btn-hipster' onClick={randomPerson}>Surprise Me</button>
       </article>
     </main>
   );
