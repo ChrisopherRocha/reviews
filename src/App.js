@@ -11,11 +11,17 @@ function App() {
   // console.log(name);
 
   const nextPerson = () => {
-
+    setIndex((currentIndex) => {
+      const newIndex = currentIndex + 1;
+      return newIndex;
+    })
   }
 
   const prevPerson = () => {
-
+    setIndex((currentIndex) => {
+      const newIndex = currentIndex - 1;
+      return newIndex;
+    })
   }
 
   return (
