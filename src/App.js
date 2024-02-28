@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import { useState } from 'react'
+import people from "./data.js"
 import './App.css';
+import './index.css';
+
+
 
 function App() {
+  const [index, setIndex] = useState(0)
+  const { name, job, image, text, id } = people[index]
+  // console.log(name);
+
+  const nextPerson = () => {
+
+  }
+
+  const prevPerson = () => {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1>Reviews</h1>
+      <article>
+        <div className='img-container'>
+          <img className='person-img' src={image} alt={name} />
+        </div>
+        <h4 className='author'>{name}</h4>
+        <p className='job'>{job}</p>
+        <p className='info'>{text}</p>
+        <div>
+          <button onClick={prevPerson}>Previous</button>
+          <button onClick={nextPerson}>Next</button>
+        </div>
+      </article>
+    </main>
   );
 }
 
 export default App;
+
